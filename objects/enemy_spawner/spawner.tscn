@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://cjhnjxrtk0y6n"]
+
+[ext_resource type="PackedScene" uid="uid://degoe7sik14ro" path="res://objects/enemy_basic/enemy_basic.tscn" id="2_lkj12"]
+[ext_resource type="Texture2D" uid="uid://c467bgeqxsesa" path="res://assets/programmer/missing.png" id="4_63hqv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b1fck"]
+resource_local_to_scene = true
+size = Vector2(408, 200)
+
+[node name="Spawner" type="CollisionShape2D"]
+shape = SubResource("RectangleShape2D_b1fck")
+sceneToSpawn = ExtResource("2_lkj12")
+numberToSpawnAtReady = 10

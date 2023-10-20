@@ -1,0 +1,107 @@
+[gd_scene load_steps=12 format=3 uid="uid://c0fw8feabdn0j"]
+
+[ext_resource type="PackedScene" uid="uid://sg0kn61fbqfe" path="res://objects/player/player.tscn" id="2_f2tky"]
+[ext_resource type="Script" path="res://scripts/script_resource_thing.gd" id="2_r132v"]
+[ext_resource type="Script" path="res://scripts/another_script_resource_thing.gd" id="3_6jgag"]
+[ext_resource type="Texture2D" uid="uid://c467bgeqxsesa" path="res://assets/programmer/missing.png" id="3_35qon"]
+[ext_resource type="PackedScene" uid="uid://bd8jfq310ykhu" path="res://objects/cart/cart.tscn" id="3_r0dpm"]
+[ext_resource type="PackedScene" uid="uid://b02cadjhgppp8" path="res://objects/programmer_static_body/programmer_static_body.tscn" id="4_opgo2"]
+[ext_resource type="PackedScene" uid="uid://cjhnjxrtk0y6n" path="res://objects/enemy_spawner/spawner.tscn" id="8_4ux2f"]
+
+[sub_resource type="Resource" id="Resource_cikir"]
+script = ExtResource("2_r132v")
+
+[sub_resource type="Resource" id="Resource_xtupw"]
+script = ExtResource("3_6jgag")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gxmy3"]
+resource_local_to_scene = true
+size = Vector2(819, 776.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t661f"]
+resource_local_to_scene = true
+size = Vector2(819, 776.5)
+
+[node name="SCENE_ProofOfConcept" type="Node2D"]
+metadata/_edit_horizontal_guides_ = []
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-170, -449)
+zoom = Vector2(1.8, 1.8)
+limit_left = -880
+limit_top = -535
+limit_right = 880
+limit_bottom = 460
+
+[node name="CameraConstraints" type="Node2D" parent="."]
+
+[node name="MinimumPosition" type="Node2D" parent="CameraConstraints"]
+position = Vector2(-886, -548)
+
+[node name="MaximumPosition" type="Node2D" parent="CameraConstraints"]
+position = Vector2(879, 465)
+
+[node name="PlayerThings" type="Node" parent="."]
+
+[node name="PlayerWiper" parent="PlayerThings" instance=ExtResource("2_f2tky")]
+position = Vector2(-170, -449)
+thing = SubResource("Resource_cikir")
+another_thing = SubResource("Resource_xtupw")
+
+[node name="Environment" type="Node" parent="."]
+
+[node name="Dirtpath" type="Sprite2D" parent="Environment"]
+z_index = -1
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(-8, 47)
+texture = ExtResource("3_35qon")
+
+[node name="Dirtpath2" type="Sprite2D" parent="Environment"]
+z_index = -1
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(-8, -153)
+texture = ExtResource("3_35qon")
+
+[node name="Dirtpath4" type="Sprite2D" parent="Environment"]
+z_index = -1
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(-8, -353)
+texture = ExtResource("3_35qon")
+
+[node name="Dirtpath3" type="Sprite2D" parent="Environment"]
+z_index = -1
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(-8, 247)
+texture = ExtResource("3_35qon")
+
+[node name="Cart" parent="Environment" instance=ExtResource("3_r0dpm")]
+position = Vector2(-1, 133)
+scale = Vector2(0.967675, 1.00258)
+
+[node name="Wall" parent="Environment" instance=ExtResource("4_opgo2")]
+position = Vector2(-963, -19)
+scale = Vector2(1, 7.04)
+
+[node name="Wall2" parent="Environment" instance=ExtResource("4_opgo2")]
+position = Vector2(963, 7)
+scale = Vector2(1, 7.08)
+
+[node name="Wall3" parent="Environment" instance=ExtResource("4_opgo2")]
+position = Vector2(-31, 547)
+scale = Vector2(14.4, 1)
+
+[node name="Wall4" parent="Environment" instance=ExtResource("4_opgo2")]
+position = Vector2(0, -623)
+scale = Vector2(13.32, 1)
+
+[node name="Spawner" parent="Environment" instance=ExtResource("8_4ux2f")]
+position = Vector2(-473, 81)
+shape = SubResource("RectangleShape2D_gxmy3")
+
+[node name="Spawner2" parent="Environment" instance=ExtResource("8_4ux2f")]
+position = Vector2(472, 61)
+shape = SubResource("RectangleShape2D_t661f")

@@ -1,0 +1,96 @@
+[gd_scene load_steps=18 format=3 uid="uid://degoe7sik14ro"]
+
+[ext_resource type="Texture2D" uid="uid://c467bgeqxsesa" path="res://assets/programmer/missing.png" id="4_63hqv"]
+[ext_resource type="Texture2D" uid="uid://c467bgeqxsesa" path="res://assets/programmer/missing.png" id="5_f78yu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_77msk"]
+size = Vector2(30, 29)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rt12t"]
+atlas = ExtResource("5_f78yu")
+region = Rect2(0, 0, 65, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lu228"]
+atlas = ExtResource("5_f78yu")
+region = Rect2(65, 0, 65, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uxp2n"]
+atlas = ExtResource("5_f78yu")
+region = Rect2(130, 0, 65, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8w5rd"]
+atlas = ExtResource("5_f78yu")
+region = Rect2(195, 0, 65, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_664r8"]
+atlas = ExtResource("5_f78yu")
+region = Rect2(260, 0, 65, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8j8uw"]
+atlas = ExtResource("5_f78yu")
+region = Rect2(325, 0, 65, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_06mno"]
+atlas = ExtResource("5_f78yu")
+region = Rect2(390, 0, 65, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w27c3"]
+atlas = ExtResource("5_f78yu")
+region = Rect2(455, 0, 65, 60)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4o71k"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_63hqv")
+}],
+"loop": true,
+"name": &"hurt",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rt12t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lu228")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uxp2n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8w5rd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_664r8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8j8uw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_06mno")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w27c3")
+}],
+"loop": true,
+"name": &"run",
+"speed": 10.0
+}]
+
+[node name="Physics" type="RigidBody2D"]
+position = Vector2(1, 0)
+lock_rotation = true
+linear_damp = 0.8
+followForce = 10.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 3.5)
+shape = SubResource("RectangleShape2D_77msk")
+
+[node name="RatSprite" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(953, 226)
+sprite_frames = SubResource("SpriteFrames_4o71k")
+animation = &"hurt"
+offset = Vector2(-953, -226)

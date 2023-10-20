@@ -1,0 +1,143 @@
+[gd_scene load_steps=17 format=3 uid="uid://sg0kn61fbqfe"]
+
+[ext_resource type="Script" path="res://objects/player/player.gd" id="1_ec18b"]
+[ext_resource type="Texture2D" uid="uid://c467bgeqxsesa" path="res://assets/programmer/missing.png" id="3_c61iu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x5nau"]
+size = Vector2(22, 52)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k0ie2"]
+atlas = ExtResource("3_c61iu")
+region = Rect2(0, 0, 45, 65)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bktxn"]
+atlas = ExtResource("3_c61iu")
+region = Rect2(45, 0, 45, 65)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o4s3c"]
+atlas = ExtResource("3_c61iu")
+region = Rect2(90, 0, 45, 65)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6y2bp"]
+atlas = ExtResource("3_c61iu")
+region = Rect2(135, 0, 45, 65)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y2f2x"]
+atlas = ExtResource("3_c61iu")
+region = Rect2(0, 0, 45, 65)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f8wsc"]
+atlas = ExtResource("3_c61iu")
+region = Rect2(45, 0, 45, 65)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3048e"]
+atlas = ExtResource("3_c61iu")
+region = Rect2(90, 0, 45, 65)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sp8g2"]
+atlas = ExtResource("3_c61iu")
+region = Rect2(135, 0, 45, 65)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4iqux"]
+atlas = ExtResource("3_c61iu")
+region = Rect2(180, 0, 45, 65)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1buhc"]
+atlas = ExtResource("3_c61iu")
+region = Rect2(225, 0, 45, 65)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_epg03"]
+atlas = ExtResource("3_c61iu")
+region = Rect2(270, 0, 45, 65)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vkymg"]
+atlas = ExtResource("3_c61iu")
+region = Rect2(315, 0, 45, 65)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_eq75d"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k0ie2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bktxn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o4s3c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6y2bp")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y2f2x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f8wsc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3048e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sp8g2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4iqux")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1buhc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_epg03")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vkymg")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 10.0
+}]
+
+[node name="PlayerWiper" type="RigidBody2D"]
+lock_rotation = true
+script = ExtResource("1_ec18b")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2, -1)
+shape = SubResource("RectangleShape2D_x5nau")
+
+[node name="MercenarySprite" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, -7)
+sprite_frames = SubResource("SpriteFrames_eq75d")
+animation = &"idle"
+
+[node name="Sword" type="Node2D" parent="."]
+rotation = -1.57079
+
+[node name="Sprite2D" type="Sprite2D" parent="Sword"]
+texture_filter = 1
+position = Vector2(-2, 8)
+rotation = 0.197096
+texture = ExtResource("3_c61iu")
+offset = Vector2(5.63105, -64.2356)
+flip_h = true
+
+[node name="SwordAttackBox" type="Area2D" parent="Sword"]
+
+[node name="CollisionShape2D2" type="CollisionPolygon2D" parent="Sword/SwordAttackBox"]
+scale = Vector2(0.289418, 0.404395)
+polygon = PackedVector2Array(0, 1, 47, 249, 197, 249, 354, 4, 194, -232, 39, -232)
+
+[node name="VisualArea" type="Node" parent="Sword"]
+
+[node name="UpperBound" type="Node2D" parent="Sword/VisualArea"]
+position = Vector2(13, -84)
+
+[node name="LowerBound" type="Node2D" parent="Sword/VisualArea"]
+position = Vector2(11, 58)

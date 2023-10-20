@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://bd8jfq310ykhu"]
+
+[ext_resource type="Texture2D" uid="uid://c467bgeqxsesa" path="res://assets/programmer/missing.png" id="1_f7aws"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2u2ol"]
+size = Vector2(59, 49)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_awb0d"]
+size = Vector2(85, 117)
+
+[node name="Cart" type="Node2D"]
+
+[node name="Cart" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_f7aws")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0.5, -51.5)
+shape = SubResource("RectangleShape2D_2u2ol")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0.5, 30.5)
+shape = SubResource("RectangleShape2D_awb0d")

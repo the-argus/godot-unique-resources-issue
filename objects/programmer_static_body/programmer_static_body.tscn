@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://b02cadjhgppp8"]
+
+[ext_resource type="Texture2D" uid="uid://c467bgeqxsesa" path="res://assets/programmer/missing.png" id="1_cag2f"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kdqxy"]
+size = Vector2(157, 158)
+
+[node name="StaticBody2D" type="StaticBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_kdqxy")
+
+[node name="Missing" type="Sprite2D" parent="."]
+texture = ExtResource("1_cag2f")
